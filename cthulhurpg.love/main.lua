@@ -35,6 +35,8 @@ function love.load()
 	input:bind('k', 'save')
 	input:bind('f', 'giveXP')
 	print('Inputs: COMPLETE')
+	
+	tiles = {}
 
     UI = {}
 
@@ -55,6 +57,10 @@ function love.load()
 		UI.MainMenu[0]:SetColor(0, 0, 0, 0.5)
         GAMESTATE = 'PLAY'
 		ply = player()
+		tiles[0] = tile('resources/images/start_area.png')
+		tiles[1] = tile('resources/images/start_area.png', tiles[0], 'down')
+		tiles[2] = tile('resources/images/dirt_path.png', tiles[1], 'right')
+		tiles[3] = tile('resources/images/dirt_path.png', tiles[2], 'right')
     end)
     UI.MainMenu[2] = ui('Button', UI.MainMenu[0])
     UI.MainMenu[2]:SetPos(UI.MainMenu[1].x, UI.MainMenu[1].y + UI.MainMenu[1].h + 14)
@@ -67,9 +73,6 @@ function love.load()
         love.event.quit()
     end)
 	print('Main Menu: COMPLETE')
-	
-	images = {}
-	images.base = love.graphics.newImage('resources/images/start_area.png')
 end
 
 function addFiles(folder, file_list)
@@ -93,10 +96,23 @@ function requireFiles(files)
     end
 end
 
+function updateTiles(dt)
+	for k, v in pairs(tiles) do
+		v:update(dt)
+	end
+end
+
+function drawTiles()
+	for k, v in pairs(tiles) do
+		v:draw()
+	end
+end
+
 function love.update(dt)
 	if GAMESTATE == 'MENU' then
 		UI.MainMenu[0]:update(dt)
 	else
+		updateTiles(dt)
 		ply:update(dt)
 		if input:pressed('escape') then
 			saveGame()
@@ -110,7 +126,8 @@ function love.draw()
 		UI.MainMenu[0]:draw()
 	else
 		love.graphics.setColor(1, 1, 1)
-		love.graphics.draw(images.base, (window.w / 2) + (images.base:getWidth() / 2) - ply.cam.x, (window.h / 2) + 64 - ply.cam.y)
+		drawTiles()
+		--love.graphics.draw(images.base, (window.w / 2) + (images.base:getWidth() / 2) - ply.cam.x, (window.h / 2) + 64 - ply.cam.y)
 		ply:draw()
 	end
 end
