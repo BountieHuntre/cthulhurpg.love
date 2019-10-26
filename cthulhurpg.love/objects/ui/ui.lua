@@ -80,6 +80,7 @@ end
 
 function ui:SetFont(font)
     self.font = font or defaultFont
+	self.trueFont = font or defaultFont
 end
 
 function ui:SetText(text)
@@ -199,12 +200,15 @@ function ui:draw()
     end
     if self.isHovered then
 		if self.type == 'Button' then
-			self:SetFont(norseBold)
+			if self.font == norseRegular then
+				self:SetFont(norseBold)
+			end
 			love.graphics.setColor(255, 255, 255, 255)
 			love.graphics.rectangle('line', self.x, self.y, self.w, self.h)
 		end
 	else
-		self:SetFont(norseRegular)
+		self.font = self.trueFont
+		self:SetFont(self.font)
     end
     love.graphics.setColor(self.textColor)
     love.graphics.setFont(self.font)

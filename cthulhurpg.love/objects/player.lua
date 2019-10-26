@@ -7,11 +7,11 @@ function player:new(data)
 	self.elapsedTime = 0
 	
 	self.images = {}
-	self.images[1] = love.graphics.newImage('resources/images/ply_breathing.png')
-	self.images[2] = love.graphics.newImage('resources/images/ply_walking_down.png')
-	self.images[3] = love.graphics.newImage('resources/images/ply_walking_up.png')
-	self.images[4] = love.graphics.newImage('resources/images/ply_walking_left.png')
-	self.images[5] = love.graphics.newImage('resources/images/ply_walking_right.png')
+	self.images[1] = love.graphics.newImage('resources/images/PLAYER/ply_breathing.png')
+	self.images[2] = love.graphics.newImage('resources/images/PLAYER/ply_walking_down.png')
+	self.images[3] = love.graphics.newImage('resources/images/PLAYER/ply_walking_up.png')
+	self.images[4] = love.graphics.newImage('resources/images/PLAYER/ply_walking_left.png')
+	self.images[5] = love.graphics.newImage('resources/images/PLAYER/ply_walking_right.png')
 	
 	self.frames = {}
 	
