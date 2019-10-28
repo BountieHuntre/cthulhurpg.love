@@ -62,6 +62,10 @@ function love.load()
 		UI.MainMenu[0]:SetColor(0, 0, 0, 0.5)
         GAMESTATE = 'PLAY'
 		ply = player()
+		test_npc = npc()
+		test_npc:SetPos(800, 300)
+		test_npc:SetScale(2)
+		test_npc:SetModel('resources/images/NPC/npc_test.png')
 		tiles[0] = tile('resources/images/LANDSCAPE/start_area.png')
 		tiles[1] = tile('resources/images/LANDSCAPE/start_area.png', tiles[0], 'down')
 		tiles[2] = tile('resources/images/LANDSCAPE/dirt_path.png', tiles[1], 'right')
@@ -118,6 +122,7 @@ function love.update(dt)
 		UI.MainMenu[0]:update(dt)
 	else
 		updateTiles(dt)
+		test_npc:update(dt)
 		ply:update(dt)
 		if input:pressed('escape') then
 			saveGame()
@@ -132,6 +137,7 @@ function love.draw()
 	else
 		love.graphics.setColor(1, 1, 1)
 		drawTiles()
+		test_npc:draw()
 		--love.graphics.draw(images.base, (window.w / 2) + (images.base:getWidth() / 2) - ply.cam.x, (window.h / 2) + 64 - ply.cam.y)
 		ply:draw()
 	end
