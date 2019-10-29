@@ -1,5 +1,5 @@
-ww = 800
-wh = 600
+ww = 1200
+wh = 800
 border = false
 
 function love.conf(t)

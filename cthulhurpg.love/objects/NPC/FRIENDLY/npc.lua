@@ -96,7 +96,7 @@ end
 function npc:update(dt)
 	local x, y = love.mouse.getPosition()
 	
-	if x > self.x - ply.x - 200 and x < self.x - ply.x - 200 + self.w and y > self.y - ply.cam.y and y < self.y - ply.cam.y + self.h then
+	if x > self.x - ply.x and x < self.x - ply.x + self.w and y > self.y - ply.y and y < self.y - ply.y + self.h then
 		self.isHovered = true
 		if input:pressed('left_click') then
 			self:Talk()
@@ -113,10 +113,10 @@ end
 function npc:draw()
 	if self.x and self.y then
 		if self.model then
-			love.graphics.draw(self.model, self.x - ply.x - 200, self.y - ply.cam.y, 0, self.scale)
+			love.graphics.draw(self.model, self.x - ply.x, self.y - ply.y, 0, self.scale)
 			if self.isHovered then
 				love.graphics.setColor(0, 0, 0)
-				love.graphics.rectangle('line',  self.x - ply.x - 200 - 4, self.y - ply.cam.y - 4, self.w + 8, self.h + 8)
+				love.graphics.rectangle('line',  self.x - ply.x - 4, self.y - ply.y - 4, self.w + 8, self.h + 8)
 				love.graphics.setColor(1, 1, 0)
 			end
 			

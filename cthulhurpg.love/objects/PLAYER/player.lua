@@ -65,12 +65,8 @@ function player:new(data)
 	self.activeFrame = self.frames[self.currentAnim][self.currentDir][self.currentFrame]
 	
 	self.scale = 2
-    self.w = 64
-    self.h = 64
     self.x = 0
     self.y = 0
-    self.realX = 0
-    self.realY = 0
 	
 	self.savedData = data
 	self.savedData = {}

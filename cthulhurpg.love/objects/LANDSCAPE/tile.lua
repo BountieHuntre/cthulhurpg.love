@@ -6,8 +6,8 @@ function tile:new(dir, conn, str, x, y)
 		
 		self.w = self.img:getWidth()
 		self.h = self.img:getHeight()
-		self.x = 0
-		self.y = 0
+		self.x = ply.x
+		self.y = ply.y
 		
 		if conn and str and type(conn) == 'table' and type(str) == 'string' then
 			if str == 'up' then

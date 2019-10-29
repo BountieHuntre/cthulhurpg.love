@@ -63,7 +63,7 @@ function love.load()
         GAMESTATE = 'PLAY'
 		ply = player()
 		test_npc = npc()
-		test_npc:SetPos(800, 300)
+		test_npc:SetPos(200, 0)
 		test_npc:SetScale(2)
 		test_npc:SetModel('resources/images/NPC/npc_test.png')
 		tiles[0] = tile('resources/images/LANDSCAPE/start_area.png')
